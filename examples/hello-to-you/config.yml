@@ -1,0 +1,10 @@
+name: hello-to-you
+config:
+  verbose: false
+  parameters:
+    toolbar: true
+parameters:
+  name:
+    label: Greeting
+    required: true
+app: {}

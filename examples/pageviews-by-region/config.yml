@@ -1,0 +1,67 @@
+name: pageviews-by-region
+config:
+  verbose: false
+  parameters:
+    toolbar: true
+variable_store:
+  apdex_t: 1.7
+parameters:
+  account_id:
+    label: Account ID
+    required: true
+    type: account
+  country_code:
+    label: Country Code
+    default: ''
+    type: select
+    options:
+    - { value: '', label: 'All' }
+    - US
+    - DE
+    - CA
+app:
+  home:
+    actions:
+    - action: run-nrql
+      account_id: "${account_id}"
+      query: "FROM PageView SELECT count(*) as throughput, average(duration) as duration, sum(asnLatitude)/count(*) as lat, sum(asnLongitude)/count(*) as lng WHERE appName = 'WebPortal' AND countryCode LIKE '%${country_code}%' FACET countryCode, regionCode LIMIT 1000"
+      raw: true
+    - action: render-chart
+      type: Table
+    - action: map
+      from: "${results.raw.facets[?(@.results[1].average < $[apdex_t])]}"
+      to:
+        lat: "${item.results[2].result}"
+        lng: "${item.results[3].result}"
+        weight: "${item.results[0].count}"
+      store_variable: satisfied_points
+    - action: map
+      from: "${results.raw.facets[?(@.results[1].average >= $[apdex_t] && @.results[1].average < $[apdex_t] * 4)]}"
+      to:
+        lat: "${item.results[2].result}"
+        lng: "${item.results[3].result}"
+        weight: "${item.results[0].count}"
+      store_variable: tolerating_points
+    - action: map
+      from: "${results.raw.facets[?(@.results[1].average >= $[apdex_t] * 4)]}"
+      to:
+        lat: "${item.results[2].result}"
+        lng: "${item.results[3].result}"
+        weight: "${item.results[0].count}"
+      store_variable: frustrated_points
+    - action: render-component
+      at: pageviews-map
+      type: Leaflet
+      class_name: pageviews-map
+      center:
+      - 10.5731
+      - -7.5898
+      zoom: 2
+      zoom_control: true
+      point_groups:
+      - points: "${satisfied_points}"
+        color: "#11A600"
+      - points: "${tolerating_points}"
+        color: "#FFD966"
+      - points: "${frustrated_points}"
+        color: "#BF0016"

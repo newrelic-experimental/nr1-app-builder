@@ -1,0 +1,7 @@
+{
+    "schemaType": "LAUNCHER",
+    "id": "nr1-app-builder-launcher",
+    "displayName": "App Builder",
+    "description": "Use YAML, HTML, and CSS to create no-code NR1 applications.",
+    "rootNerdletId": "nr1-app-builder-nerdlet"
+}

@@ -1,0 +1,6 @@
+name: hello-world
+config:
+  verbose: false
+variable_store:
+  greeting: Hello, world!
+app: {}

@@ -1,0 +1,32 @@
+.pageviews-by-region-app {
+}
+
+.pageviews-by-region-app .pageviews-table {
+    width: 100%;
+    height: 99vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.pageviews-by-region-app .pageviews-row {
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#home {
+    width: 100%;
+    height: 250px;
+}
+
+.pageviews-by-region-app .pageviews-map {
+    width: 100%;
+    z-index: 0;
+    height: 600px;
+}
+
+#pageviews-map {
+    width: 100%;
+    z-index: 0;
+    height: 600px;
+}

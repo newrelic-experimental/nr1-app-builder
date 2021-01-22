@@ -1,0 +1,41 @@
+name: use-nerdgraph
+config:
+  verbose: false
+  parameters:
+    toolbar: true
+parameters:
+  account_id:
+    label: Account ID
+    required: true
+    type: account
+app:
+  home:
+    actions:
+    - action: run-gql
+      query: >
+        query($id: Int!) {
+          actor {
+            account(id: $id) {
+              alerts {
+                policiesSearch {
+                  policies {
+                    id
+                    incidentPreference
+                    name
+                  }
+                }
+              }
+            }
+          }
+        }
+      variables:
+        id: "${account_id}"
+    - action: render-chart
+      type: Table
+      series:
+        type: table
+        values: "${results.actor.account.alerts.policiesSearch.policies}"
+        columns:
+        - name
+        - id
+        - incidentPreference

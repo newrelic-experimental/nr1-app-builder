@@ -1,0 +1,10 @@
+name: hello-to-you-custom-form
+config:
+  verbose: false
+  parameters:
+    form: false
+parameters:
+  name:
+    label: Greeting
+    required: true
+app: {}

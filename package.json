@@ -1,0 +1,40 @@
+{
+    "private": true,
+    "name": "nr1-app-builder",
+    "version": "1.0.0",
+    "scripts": {
+        "start": "nr1 nerdpack:serve",
+        "test": "exit 0"
+    },
+    "nr1": {
+        "uuid": "f6cb8c24-bba4-4eaf-9c93-9408bf40e390"
+    },
+    "dependencies": {
+        "camelcase": "^6.2.0",
+        "console-feed": "^2.8.11",
+        "date-and-time": "^0.14.2",
+        "es6-promise-pool": "^2.5.0",
+        "handlebars": "^4.7.6",
+        "jsonpath-plus": "^4.0.0",
+        "jszip": "^3.5.0",
+        "leaflet": "^1.7.1",
+        "prop-types": "^15.6.2",
+        "react": "^16.6.3",
+        "react-ace": "^9.2.1",
+        "react-datepicker": "^3.3.0",
+        "react-dom": "^16.6.3",
+        "react-inspector": "^2.3.1",
+        "react-leaflet": "^2.8.0",
+        "react-modal": "^3.12.1",
+        "yaml": "^1.10.0"
+    },
+    "browserslist": [
+        "last 2 versions",
+        "not ie < 11",
+        "not dead"
+    ],
+    "devDependencies": {
+        "raw-loader": "^4.0.2",
+        "to-js-identifier": "^1.0.0"
+    }
+}

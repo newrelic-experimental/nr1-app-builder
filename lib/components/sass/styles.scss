@@ -1,0 +1,107 @@
+@import './empty-view';
+@import './error-view';
+@import './spinner-view';
+@import './nerdpack-layout-standard';
+@import '../third-party/sass/styles';
+
+.app-shell {
+  .content-container {
+    height: 100%;
+    overflow: hidden;
+
+    .report-params-view {
+
+      label {
+        color: #223030;
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+        padding-bottom: 5px;
+        padding-top: 3px;
+      }
+
+      .required label:after, .label.required:after {
+        content: ' *';
+        color: red;
+      }
+
+      .report-params {
+        padding: 10px 20px 0 20px;
+        overflow-y: auto;
+        flex: 1 1 90%;
+        width: 100%;
+        box-sizing: border-box;
+
+        [class*=-StackItem],
+        [class*=-TextField] {
+          width: 100%;
+        }
+
+        .react-datepicker-wrapper {
+          width: 100%;
+
+          .react-datepicker__input-container {
+            input {
+              border: 0;
+              box-shadow: 0 1px 0 0 #e3e4e4;
+              padding: 4px 0;
+              font-size: inherit;
+              width: 100%;
+            }
+          }
+        }
+
+        .react-datepicker__input-time-container .react-datepicker-time__input-container .react-datepicker-time__input input {
+          width: 100px;
+        }
+
+        .file-picker-wrapper {
+          display: flex;
+          align-items: center;
+          * {
+            margin-right: 10px;
+          }
+        }
+      }
+
+      .button-bar {
+        flex: 0 0 10%;
+        box-sizing: border-box;
+        border-top: 1px solid #d5d7d7;
+        padding: 20px;
+        width: 100%;
+
+        button {
+          margin-right: 10px;
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    .primary-grid {
+      .primary-content {
+        height: 100%;
+        padding: 0;
+
+        .report-view {
+          height: 100%;
+
+          iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.object-inspector {
+
+  h3 {
+    margin-bottom: 8px;
+  }
+
+}

@@ -1,0 +1,14 @@
+<div class="hello-to-you-custom-form-app">
+    <div>
+        <h3>Enter your name below:</h3>
+        <div class="hello-fields">
+            <input type="text" id="name" />
+        </div>
+        <button type="button" id="hello-to-you-custom-form-submit">Say hello!</button>
+    </div>
+    {{#if name}}
+    <h2>Hello, {{ name }}!</h2>
+    {{else}}
+    <h2>Welcome!</h2>
+    {{/if}}
+</div>
