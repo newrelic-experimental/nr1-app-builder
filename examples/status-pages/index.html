@@ -1,0 +1,38 @@
+<div class="status-pages">
+  <div class="sp-cards grid-4">
+    {{#*inline "card"}}
+      <div class="col sp-card sp-status-{{ status_indicator }}">
+        <div class="sp-logo"><img src="{{ logo }}" /></div>
+        <h2>{{ status_description }}</h2>
+        <ul>
+          {{#for incidents count=5 }}
+            <li class="sp-incident sp-incident-{{coalesce this.impact this.severity}}">
+              <span class="sp-incident-icon"></span>
+              <div>
+                <h4>
+                {{coalesce this.name this.external_desc}}
+                </h4>
+              </div>
+            </li>
+          {{/for}}
+        </ul>
+      </div>
+    {{/inline}}
+    {{#each _}}
+      {{> card
+        status_indicator=this.summary.status.indicator
+        logo=this.vendor.logo
+        status_description=this.summary.status.description
+        incidents=this.incidents.incidents
+      }}
+    {{/each}}
+    {{#with google}}
+      {{> card
+        status_indicator=(not (empty this.open) this.open.[0].severity)
+        logo=this.vendor.logo
+        status_description=(ifx (empty this.open) 'All Systems Operational' 'Ongoing Issues')
+        incidents=this.incidents
+      }}
+    {{/with}}
+  </div>
+</div>

@@ -13,6 +13,9 @@ import pageViewsByRegionCss from '!raw-loader!./pageviews-by-region/style.css'
 import useNerdgraph from '!raw-loader!./use-nerdgraph/config.yml'
 import useNerdgraphHtml from '!raw-loader!./use-nerdgraph/index.html'
 import useNerdgraphCss from '!raw-loader!./use-nerdgraph/style.css'
+import statusPages from '!raw-loader!./status-pages/config.yml'
+import statusPagesHtml from '!raw-loader!./status-pages/index.html'
+import statusPagesCss from '!raw-loader!./status-pages/style.css'
 
 export default [
   {
@@ -54,5 +57,13 @@ export default [
       home: useNerdgraphHtml
     },
     css: useNerdgraphCss,
+  },
+  {
+    label: 'Status Pages',
+    config: statusPages,
+    views: {
+      home: statusPagesHtml
+    },
+    css: statusPagesCss,
   },
 ]

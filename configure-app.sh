@@ -5,7 +5,7 @@ if [ "" == "$1" ]; then
   exit 1
 fi
 
-DEPS='yaml handlebars es6-promise-pool jsonpath-plus date-and-time react-inspector react-datepicker camelcase leaflet react-leaflet@2.8.0'
+DEPS='yaml handlebars es6-promise-pool jsonpath-plus date-and-time react-inspector react-datepicker camelcase leaflet react-leaflet@2.8.0 gridlex just-handlerbars-helpers moment currencyformatter.js sprintf-js'
 DEVDEPS='raw-loader to-js-identifier'
 
 echo 'Copying runtime...'

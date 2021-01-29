@@ -38,7 +38,7 @@ const SidebarView = props => {
         <SourceEditorView
           title="HTML"
           editKey="html"
-          mode="html"
+          mode="handlebars"
           value={html}
           onOpenEditModal={onOpenEditModal}
           onChange={onHtmlChange}

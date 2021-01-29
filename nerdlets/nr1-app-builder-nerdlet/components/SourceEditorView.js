@@ -8,7 +8,7 @@ import {
 } from 'nr1'
 import AceEditor from 'react-ace'
 import "ace-builds/src-noconflict/mode-yaml"
-import "ace-builds/src-noconflict/mode-html"
+import "ace-builds/src-noconflict/mode-handlebars"
 import "ace-builds/src-noconflict/mode-css"
 import "ace-builds/src-noconflict/theme-tomorrow_night"
 
@@ -56,6 +56,8 @@ const SourceEditorView = props => {
           editorProps={{ $blockScrolling: true }}
           value={value}
           height="100%"
+          tabSize={2}
+          setOptions={{ useSoftTabs: true }}
         />
       </StackItem>
     </Stack>

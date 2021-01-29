@@ -1,0 +1,52 @@
+name: status-pages
+config:
+  verbose: false
+  css: skeleton
+variable_store:
+  status_pages:
+  - name: 'New Relic'
+    logo: 'https://newrelic.com/assets/newrelic/brand/logo-newrelic-068be7f47972f39427fe4a41ad1cad71.svg'
+    summary: 'https://status.newrelic.com/api/v2/summary.json'
+    incidents: 'https://status.newrelic.com/api/v2/incidents.json'
+  - name: 'Github'
+    logo: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png'
+    summary: 'https://www.githubstatus.com/api/v2/summary.json'
+    incidents: 'https://www.githubstatus.com/api/v2/incidents.json'
+  - name: 'Jira'
+    logo: 'https://www.atlassian.com/dam/jcr:e33efd9e-e0b8-4d61-a24d-68a48ef99ed5/Jira%20Software@2x-blue.png'
+    summary: 'https://jira-software.status.atlassian.com/api/v2/summary.json'
+    incidents: 'https://jira-software.status.atlassian.com/api/v2/incidents.json'
+  google_status_page:
+    name: 'Google Cloud'
+    logo: 'https://www.gstatic.com/devrel-devsite/prod/vbd4700e58d826f0eab371eadc20e0e343567df356800794a790eebf2ac059db2/cloud/images/cloud-logo.svg'
+    incidents: 'https://status.cloud.google.com/incidents.json'
+app:
+  home:
+    actions:
+    - action: each
+      items: "${status_pages}"
+      as: status_page
+      actions:
+      - action: get-url
+        url: "${status_page.summary}"
+        store_variable: summary
+      - action: get-url
+        url: "${status_page.incidents}"
+        store_variable: incidents
+      - action: store-variable
+        value:
+          vendor: "${status_page}"
+          summary: "${summary}"
+          incidents: "${incidents}"
+    - action: get-url
+      url: "${google_status_page.incidents}"
+      store_variable: google_incidents
+    - action: store-variable
+      name: google
+      value:
+        vendor: "${google_status_page}"
+        incidents: "${google_incidents}"
+        open: "${google[?(@.end === undefined || @.end === '')]}"
+    - action: render-object
+
+

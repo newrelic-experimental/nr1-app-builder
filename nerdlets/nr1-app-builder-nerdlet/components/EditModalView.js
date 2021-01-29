@@ -19,6 +19,7 @@ const EditModalView = props => {
     value,
     logs,
     onClose,
+    onSave,
     onChange,
   } = props
 
@@ -71,6 +72,8 @@ const EditModalView = props => {
                 onChange={newValue => onChange(editKey, newValue)}
                 editorProps={{ $blockScrolling: true }}
                 value={value}
+                tabSize={2}
+                setOptions={{ useSoftTabs: true }}
               />
             )
           }
@@ -85,7 +88,7 @@ const EditModalView = props => {
             {
               editKey && editKey !== 'console' && (
                 <Button
-                  onClick={() => onClose(editKey)}
+                  onClick={() => onSave(editKey)}
                   type={Button.TYPE.PRIMARY}
                 >
                   Save

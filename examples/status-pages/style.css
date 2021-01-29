@@ -1,0 +1,96 @@
+.status-pages {
+}
+
+.status-pages h2 {
+  border-radius: 4px;
+  background-color: #8e9494;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px;
+  max-height: 35px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.status-pages h2 {
+  background-color: #3ca653;
+}
+
+.status-pages .sp-status-minor h2,
+.status-pages .sp-status-low h2 {
+  background-color: #ffd966;
+}
+
+.status-pages .sp-status-major h2,
+.status-pages .sp-status-medium h2 {
+  background-color: #ff8014;
+}
+
+.status-pages .sp-status-critical h2,
+.status-pages .sp-status-high h2 {
+  background-color: #bf0016;
+}
+
+.status-pages .sp-card ul {
+  list-style-type: none;
+}
+
+.status-pages .sp-card ul li {
+  padding: 6px 0;
+}
+
+.status-pages .sp-card .sp-logo {
+  text-align: center;
+  height: 75px;
+  max-height: 75px;
+}
+
+.status-pages .sp-card img {
+  width: 100%;
+  height: auto;
+  max-height: 75px
+}
+
+.status-pages .sp-card .sp-incident {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.status-pages .sp-card .sp-incident div {
+  flex: 1 1 100%;
+}
+
+.status-pages .sp-card .sp-incident .sp-incident-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.status-pages .sp-card .sp-incident .sp-incident-icon:after {
+  content: "\01F4E3";
+  font-size: 16px;
+}
+
+.status-pages .sp-card .sp-incident-minor .sp-incident-icon:after,
+.status-pages .sp-card .sp-incident-low .sp-incident-icon:after {
+  content: "\26A0 \FE0F";
+  font-size: 16px;
+}
+
+.status-pages .sp-card .sp-incident-major .sp-incident-icon:after,
+.status-pages .sp-card .sp-incident-medium .sp-incident-icon:after {
+  content: "\2757";
+  font-size: 16px;
+}
+
+.status-pages .sp-card .sp-incident-critical .sp-incident-icon:after,
+.status-pages .sp-card .sp-incident-high .sp-incident-icon:after {
+  content: "\1F6A8";
+  font-size: 16px;
+}
+
+#home {
+  width: 100%;
+  height: 400px;
+}

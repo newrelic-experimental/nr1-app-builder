@@ -55,6 +55,7 @@ export default class AppBuilderNerdlet extends React.Component {
     this.handleOpenEditModal = this.handleOpenEditModal.bind(this)
     this.handleEditModalChange = this.handleEditModalChange.bind(this)
     this.handleCloseEditModal = this.handleCloseEditModal.bind(this)
+    this.handleSaveEditModal = this.handleSaveEditModal.bind(this)
     this.handleConfigChange = this.handleConfigChange.bind(this)
     this.handleHtmlChange = this.handleHtmlChange.bind(this)
     this.handleCssChange = this.handleCssChange.bind(this)
@@ -187,15 +188,15 @@ export default class AppBuilderNerdlet extends React.Component {
   }
 
   handleCloseEditModal(key) {
-    if (key && key !== 'console') {
-      this.setState({
-        modalKey: null,
-        [key]: this.state[`${key}_edit`],
-        dirty: true,
-      })
-      return
-    }
     this.setState({ modalKey: null })
+  }
+
+  handleSaveEditModal(key) {
+    this.setState({
+      modalKey: null,
+      [key]: this.state[`${key}_edit`],
+      dirty: true,
+    })
   }
 
   handleConfigChange(value) {
@@ -289,6 +290,7 @@ export default class AppBuilderNerdlet extends React.Component {
           value={this.state[`${modalKey}_edit`]}
           logs={logs}
           onClose={this.handleCloseEditModal}
+          onSave={this.handleSaveEditModal}
           onChange={this.handleEditModalChange}
         />
       </>
