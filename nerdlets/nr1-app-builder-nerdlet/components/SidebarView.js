@@ -3,15 +3,21 @@ import {
   Stack,
   StackItem,
 } from 'nr1'
+import HtmlEditorView from './HtmlEditorView'
 import SourceEditorView from './SourceEditorView'
 
 const SidebarView = props => {
   const {
     config,
-    html,
+    views,
     css,
+    selectedView,
+    selectedHtml,
     onOpenEditModal,
+    onAddView,
+    onRemoveView,
     onConfigChange,
+    onViewSelected,
     onHtmlChange,
     onCssChange,
   } = props
@@ -35,13 +41,15 @@ const SidebarView = props => {
         />
       </StackItem>
       <StackItem className="source-pane full-width">
-        <SourceEditorView
-          title="HTML"
-          editKey="html"
-          mode="handlebars"
-          value={html}
+        <HtmlEditorView
+          views={views}
+          selectedView={selectedView}
+          selectedHtml={selectedHtml}
           onOpenEditModal={onOpenEditModal}
+          onViewSelected={onViewSelected}
           onChange={onHtmlChange}
+          onAddView={onAddView}
+          onRemoveView={onRemoveView}
         />
       </StackItem>
       <StackItem className="source-pane full-width">

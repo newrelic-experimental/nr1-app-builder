@@ -1,0 +1,45 @@
+name: hello-world
+config:
+  verbose: false
+  default_route: apm
+variable_store:
+  account_id: 1966971
+app:
+  apm:
+    actions:
+    - action: render-chart
+      account_id: "${account_id}"
+      query: "SELECT average(duration) FROM Transaction TIMESERIES FACET appName"
+      type: Line
+      at: duration
+    - action: render-chart
+      account_id: "${account_id}"
+      query: "SELECT count(*) FROM Transaction TIMESERIES FACET appName"
+      type: Line
+      at: count
+  infra:
+    actions:
+    - action: render-chart
+      account_id: "${account_id}"
+      query: "SELECT average(cpuPercent) FROM SystemSample TIMESERIES FACET hostname"
+      type: Line
+      at: cpu
+    - action: render-chart
+      account_id: "${account_id}"
+      query: "SELECT average(memoryFreePercent) FROM SystemSample TIMESERIES FACET hostname"
+      type: Line
+      at: mem
+  k8s:
+    actions:
+    - action: render-chart
+      account_id: "${account_id}"
+      query: "SELECT average(memoryAvailableBytes) FROM K8sNodeSample TIMESERIES FACET nodeName"
+      type: Line
+      at: "node-mem"
+    - action: render-chart
+      account_id: "${account_id}"
+      query: "SELECT uniqueCount(podName) FROM K8sPodSample TIMESERIES FACET nodeName"
+      type: Line
+      at: "pod-count"
+
+

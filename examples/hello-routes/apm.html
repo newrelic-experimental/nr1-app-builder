@@ -1,0 +1,48 @@
+<div class="hello-routes-app grid">
+  <div class="col-6">
+    <h2>Traffic By Application</h2>
+    <div id="count" class="chart"></div>
+  </div>
+  <div class="col-6">
+    <h2>Average Duration By Application</h2>
+    <div id="duration" class="chart"></div>
+  </div>
+  <div class="col-12">
+    <button
+      class="ab-action-trigger"
+      ab-action="navigate"
+      ab-route="infra"
+    >
+      View Infrastructure
+    </button>
+    <button
+      class="ab-action-trigger"
+      ab-action="open-drawer"
+      ab-route="k8s"
+    >
+      View Kubernetes
+    </button>
+  </div>
+  <div class="col-12">
+    <h2>Other Things to Do</h2>
+    <p>
+      You may also like to
+      <a class="ab-action-trigger" ab-action="open-launcher" ab-target="nr1-core.explorer">go to the entity explorer</a>
+      or perhaps you would like to
+      <a class="ab-action-trigger" ab-action="open-dashboard" ab-entity="MTk2Njk3MXxWSVp8REFTSEJPQVJEfDc3NTc5OA">view this dashboard</a>.
+    </p>
+    <p>
+      You could also view that dashboard
+      <a class="ab-action-trigger" ab-action="open-drawer" ab-entity="MTk2Njk3MXxWSVp8REFTSEJPQVJEfDc3NTc5OA">like this</a>.
+    </p>
+  </div>
+  <div class="col-12">
+    <h2>A Few More Things</h2>
+    <ul>
+      <li>It's easy to open <a class="ab-action-trigger" ab-action="open-overlay" ab-target="nr1-core.search">search</a>.</li>
+      <li>
+        Or to open another nerdlet <a class="ab-action-trigger" ab-action="open-nerdlet" ab-target="dashboards.list">like this</a>
+        or <a class="ab-action-trigger" ab-action="open-drawer" ab-target="dashboards.list">like this</a>.</li>
+    </ul>
+  </div>
+</div>

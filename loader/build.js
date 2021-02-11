@@ -35,14 +35,14 @@ const buildAppJs = dir => {
       source += htmlFiles.reduce((accum, curr) => {
         return accum += `import ${curr.name} from '!raw-loader!./${curr.fileName}.html'\n`
       }, '')
-      source += 'export default { config, css, views: { '
+      source += 'export default { config, css, views: [ '
       source += htmlFiles.reduce((accum, curr, index) => {
         if (index > 0) {
           accum += ', '
         }
-        return accum += `'${curr.fileName === 'index' ? 'home' : curr.fileName}': ${curr.name}`
+        return accum += `{ id: '${curr.fileName === 'index' ? 'home' : curr.fileName}', content: ${curr.name} }`
       }, '')
-      source += ' }}'
+      source += ' ]}'
 
       return source
     })

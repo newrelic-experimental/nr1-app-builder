@@ -16,6 +16,7 @@ export default class App extends React.Component {
       config: null,
       error: null,
     }
+    this.handleOpenStackedRoute = this.handleOpenStackedRoute.bind(this)
   }
 
   componentDidMount() {
@@ -33,6 +34,13 @@ export default class App extends React.Component {
     }
 
     this.setState({ config, error })
+  }
+
+  handleOpenStackedRoute(params) {
+    navigation.openStackedNerdlet({
+      id: 'drawer',
+      urlState: params,
+    })
   }
 
   render() {
@@ -54,6 +62,7 @@ export default class App extends React.Component {
           config={config}
           views={appJs.views}
           css={appJs.css}
+          onOpenStackedRoute={this.handleOpenStackedRoute}
         />
       ) : (
         <SpinnerView

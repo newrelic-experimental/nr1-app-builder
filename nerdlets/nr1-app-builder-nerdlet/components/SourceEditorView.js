@@ -3,8 +3,8 @@ import {
   Stack,
   StackItem,
   HeadingText,
-  Link,
-  Icon,
+  Button,
+  Tooltip,
 } from 'nr1'
 import AceEditor from 'react-ace'
 import "ace-builds/src-noconflict/mode-yaml"
@@ -38,13 +38,58 @@ const SourceEditorView = props => {
           className="editHeader"
         >
           {title}
-          <Link
-            onClick={() => onOpenEditModal(editKey, `Edit ${title}`, mode)}
-          >
-            Edit
-            <Icon type={Icon.TYPE.INTERFACE__OPERATIONS__EXTERNAL_LINK} />
-          </Link>
         </HeadingText>
+        <div className="source-tools">
+          <Tooltip
+            text="Open the source editor dialog"
+            placementType={Tooltip.PLACEMENT_TYPE.BOTTOM}
+          >
+            <Button
+              type={Button.TYPE.OUTLINE}
+              sizeType={Button.SIZE_TYPE.SMALL}
+              iconType={Button.ICON_TYPE.INTERFACE__OPERATIONS__EDIT}
+              onClick={() => onOpenEditModal(editKey, `Edit ${title}`, mode)}
+            />
+          </Tooltip>
+          {
+            editKey === 'config' && (
+              <Tooltip
+                text="App Builder uses JSONPath expressions to select and manipulate data."
+                placementType={Tooltip.PLACEMENT_TYPE.BOTTOM}
+                additionalInfoLink={{
+                  label: "JSONPath Reference",
+                  to: "https://goessner.net/articles/JsonPath/",
+                }}
+              >
+                <Button
+                  type={Button.TYPE.OUTLINE}
+                  sizeType={Button.SIZE_TYPE.SMALL}
+                  iconType={Button.ICON_TYPE.INTERFACE__INFO__HELP}
+                  onClick={() => window.open("https://goessner.net/articles/JsonPath/")}
+                />
+              </Tooltip>
+            )
+          }
+          {
+            editKey === 'css' && (
+              <Tooltip
+                text="App Builder uses CSS to style views."
+                placementType={Tooltip.PLACEMENT_TYPE.BOTTOM}
+                additionalInfoLink={{
+                  label: "CSS Reference",
+                  to: "https://developer.mozilla.org/en-US/docs/Web/CSS",
+                }}
+              >
+                <Button
+                  type={Button.TYPE.OUTLINE}
+                  sizeType={Button.SIZE_TYPE.SMALL}
+                  iconType={Button.ICON_TYPE.INTERFACE__INFO__HELP}
+                  onClick={() => window.open("https://developer.mozilla.org/en-US/docs/Web/CSS")}
+                />
+              </Tooltip>
+            )
+          }
+        </div>
       </StackItem>
       <StackItem className="source-pane-editor" grow>
         <AceEditor

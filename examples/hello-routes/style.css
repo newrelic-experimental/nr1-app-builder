@@ -1,0 +1,18 @@
+.hello-routes-app {
+}
+
+.hello-routes-app .chart {
+  height: 500px;
+}
+
+.hello-routes-app h2 {
+  margin: 10px 0;
+}
+
+.hello-routes-app p {
+  margin: 10px 0;
+}
+
+.hello-routes-app ul {
+  list-style-position: inside;
+}

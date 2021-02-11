@@ -1,0 +1,6 @@
+{
+    "schemaType": "NERDLET",
+    "id": "drawer",
+    "displayName": "Drawer",
+    "description": "Drawer nerdlet for displaying stacked actions"
+}

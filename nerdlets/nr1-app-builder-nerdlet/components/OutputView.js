@@ -16,13 +16,14 @@ const OutputView = props => {
     renderShell,
     error,
     config,
-    html,
+    views,
     css,
     onRunScript,
     onValidateScript,
     onDownloadAssets,
     onOpenEditModal,
     onSelectExample,
+    onOpenStackedRoute,
   } = props
 
   return (
@@ -101,8 +102,9 @@ const OutputView = props => {
           renderShell ? (
             <ShellView
               config={config}
-              views={{ home: html }}
+              views={views}
               css={css}
+              onOpenStackedRoute={onOpenStackedRoute}
             />
           ) : (
             error ? (

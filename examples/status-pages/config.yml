@@ -1,7 +1,6 @@
 name: status-pages
 config:
   verbose: false
-  css: skeleton
 variable_store:
   status_pages:
   - name: 'New Relic'
