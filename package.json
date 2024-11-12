@@ -17,7 +17,7 @@
         "es6-promise-pool": "^2.5.0",
         "gridlex": "^2.7.1",
         "handlebars": "^4.7.6",
-        "jsonpath-plus": "^4.0.0",
+        "jsonpath-plus": "^10.0.7",
         "jszip": "^3.5.0",
         "just-handlebars-helpers": "^1.0.18",
         "leaflet": "^1.7.1",
